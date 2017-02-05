@@ -29,5 +29,10 @@
       required: true
       default: "INFO"
       type: "string"
+    - variable: "MongoDB_Server"
+      description: "The address of MongoDB server"
+      label: "MongoDB Server Address"
+      required: true
+      type: "string"
 
 jay-cluster:

@@ -9,7 +9,7 @@ jay-monitor:
   environment:
     - MONGODB_SERVER=${MongoDB_Server}
     - REDIS_HOST=${Redis_Host}
-    - KAFAK_HOSTS=${Kafka_Hosts}
+    - KAFKA_HOSTS=${Kafka_Hosts}
     - broker_url=${Broker_Url}
     - LOG_LEVEL=${Log_Level}
     - LOG_STDOUT=True
@@ -23,7 +23,7 @@ controller-monitor:
   environment:
     - MONGODB_SERVER=${MongoDB_Server}
     - REDIS_HOST=${Redis_Host}
-    - KAFAK_HOSTS=${Kafka_Hosts}
+    - KAFKA_HOSTS=${Kafka_Hosts}
     - broker_url=${Broker_Url}
     - LOG_LEVEL=${Log_Level}
     - LOG_STDOUT=True
@@ -37,7 +37,7 @@ celery-monitor:
   environment:
     - MONGODB_SERVER=${MongoDB_Server}
     - REDIS_HOST=${Redis_Host}
-    - KAFAK_HOSTS=${Kafka_Hosts}
+    - KAFKA_HOSTS=${Kafka_Hosts}
     - broker_url=${Broker_Url}
     - LOG_LEVEL=${Log_Level}
     - LOG_STDOUT=True
@@ -50,7 +50,7 @@ amazon-spider:
   restart: always
   environment:
     - REDIS_HOST=${Redis_Host}
-    - KAFAK_HOSTS=${Kafka_Hosts}
+    - KAFKA_HOSTS=${Kafka_Hosts}
 
 zappos-spider:
   image: 'jinanlongen/jay_cluster:py3'
@@ -60,7 +60,7 @@ zappos-spider:
   restart: always
   environment:
     - REDIS_HOST=${Redis_Host}
-    - KAFAK_HOSTS=${Kafka_Hosts}
+    - KAFKA_HOSTS=${Kafka_Hosts}
 
 sixpm-spider:
   image: 'jinanlongen/jay_cluster:py3'
@@ -70,7 +70,7 @@ sixpm-spider:
   restart: always
   environment:
     - REDIS_HOST=${Redis_Host}
-    - KAFAK_HOSTS=${Kafka_Hosts}
+    - KAFKA_HOSTS=${Kafka_Hosts}
 
 eastbay-spider:
   image: 'jinanlongen/jay_cluster:py3'
@@ -80,4 +80,4 @@ eastbay-spider:
   restart: always
   environment:
     - REDIS_HOST=${Redis_Host}
-    - KAFAK_HOSTS=${Kafka_Hosts}
+    - KAFKA_HOSTS=${Kafka_Hosts}
