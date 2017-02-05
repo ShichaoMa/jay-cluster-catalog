@@ -1,0 +1,71 @@
+version: '2'
+services:
+  jay-monitor:
+    image: 'jinanlongen/jay_cluster:py3'
+    ports:
+      - "9999:9999"
+    command: ./statistic_monitor.py
+    restart: always
+    environment:
+      - MONGODB_SERVER=${MongoDB_Server}
+      - REDIS_HOST=${Redis_Host}
+      - KAFAK_HOSTS=${Kafka_Hosts}
+      - broker_url=${Broker_Url}
+      - LOG_LEVEL=${Log_Level}
+      - LOG_STDOUT=True
+
+  controller-monitor:
+    image: 'jinanlongen/jay_cluster:py3'
+    command: ./controller_monitor.py
+    restart: always
+    environment:
+      - MONGODB_SERVER=${MongoDB_Server}
+      - REDIS_HOST=${Redis_Host}
+      - KAFAK_HOSTS=${Kafka_Hosts}
+      - broker_url=${Broker_Url}
+      - LOG_LEVEL=${Log_Level}
+      - LOG_STDOUT=True
+
+  celery-monitor:
+    image: 'jinanlongen/jay_cluster:py3'
+    command: ./celery_monitor.py
+    restart: always
+    environment:
+      - MONGODB_SERVER=${MongoDB_Server}
+      - REDIS_HOST=${Redis_Host}
+      - KAFAK_HOSTS=${Kafka_Hosts}
+      - broker_url=${Broker_Url}
+      - LOG_LEVEL=${Log_Level}
+      - LOG_STDOUT=True
+
+  amazon-spider:
+    image: 'jinanlongen/jay_cluster:py3'
+    command: scrapy crawl amazon
+    restart: always
+    environment:
+      - REDIS_HOST=${Redis_Host}
+      - KAFAK_HOSTS=${Kafka_Hosts}
+
+  zappos-spider:
+    image: 'jinanlongen/jay_cluster:py3'
+    command: scrapy crawl zappos
+    restart: always
+    environment:
+      - REDIS_HOST=${Redis_Host}
+      - KAFAK_HOSTS=${Kafka_Hosts}
+
+  sixpm-spider:
+    image: 'jinanlongen/jay_cluster:py3'
+    command: scrapy crawl 6pm
+    restart: always
+    environment:
+      - REDIS_HOST=${Redis_Host}
+      - KAFAK_HOSTS=${Kafka_Hosts}
+
+  eastbay-spider:
+    image: 'jinanlongen/jay_cluster:py3'
+    command: scrapy crawl eastbay
+    restart: always
+    environment:
+      - REDIS_HOST=${Redis_Host}
+      - KAFAK_HOSTS=${Kafka_Hosts}
