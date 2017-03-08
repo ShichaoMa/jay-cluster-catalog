@@ -1,10 +1,9 @@
 .catalog:
   name: "Jay Cluster"
-  version: 0.0.1
+  version: 0.0.2
   description: |
     Jay Cluster can crawl various ecommerce sites.
-  minimum_rancher_version: v1.3.0
-  uuid: jay-cluster-0
+  minimum_rancher_version: v1.5.0
   questions:
     - variable: "Redis_Host"
       description: "The host/ip of Redis server"
