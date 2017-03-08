@@ -1,0 +1,83 @@
+jay-monitor:
+  image: '192.168.200.35/longen/jay'
+  ports:
+    - "9999:9999"
+  volumes:
+    - '/mnt/nas/jay-cluster-py3/monitor:/app'
+  command: ./statistic_monitor.py
+  restart: always
+  environment:
+    - MONGODB_SERVER=${MongoDB_Server}
+    - REDIS_HOST=${Redis_Host}
+    - KAFKA_HOSTS=${Kafka_Hosts}
+    - broker_url=${Broker_Url}
+    - LOG_LEVEL=${Log_Level}
+    - LOG_STDOUT=True
+
+controller-monitor:
+  image: '192.168.200.35/longen/jay'
+  volumes:
+    - '/mnt/nas/jay-cluster-py3/monitor:/app'
+  command: ./controller_monitor.py
+  restart: always
+  environment:
+    - MONGODB_SERVER=${MongoDB_Server}
+    - REDIS_HOST=${Redis_Host}
+    - KAFKA_HOSTS=${Kafka_Hosts}
+    - broker_url=${Broker_Url}
+    - LOG_LEVEL=${Log_Level}
+    - LOG_STDOUT=True
+
+celery-monitor:
+  image: '192.168.200.35/longen/jay'
+  volumes:
+    - '/mnt/nas/jay-cluster-py3/monitor:/app'
+  command: ./celery_monitor.py
+  restart: always
+  environment:
+    - MONGODB_SERVER=${MongoDB_Server}
+    - REDIS_HOST=${Redis_Host}
+    - KAFKA_HOSTS=${Kafka_Hosts}
+    - broker_url=${Broker_Url}
+    - LOG_LEVEL=${Log_Level}
+    - LOG_STDOUT=True
+
+amazon-spider:
+  image: '192.168.200.35/longen/jay'
+  volumes:
+    - '/mnt/nas/jay-cluster-py3:/app'
+  command: scrapy crawl amazon
+  restart: always
+  environment:
+    - REDIS_HOST=${Redis_Host}
+    - KAFKA_HOSTS=${Kafka_Hosts}
+
+zappos-spider:
+  image: '192.168.200.35/longen/jay'
+  volumes:
+    - '/mnt/nas/jay-cluster-py3:/app'
+  command: scrapy crawl zappos
+  restart: always
+  environment:
+    - REDIS_HOST=${Redis_Host}
+    - KAFKA_HOSTS=${Kafka_Hosts}
+
+sixpm-spider:
+  image: '192.168.200.35/longen/jay'
+  volumes:
+    - '/mnt/nas/jay-cluster-py3:/app'
+  command: scrapy crawl 6pm
+  restart: always
+  environment:
+    - REDIS_HOST=${Redis_Host}
+    - KAFKA_HOSTS=${Kafka_Hosts}
+
+eastbay-spider:
+  image: '192.168.200.35/longen/jay'
+  volumes:
+    - '/mnt/nas/jay-cluster-py3:/app'
+  command: scrapy crawl eastbay
+  restart: always
+  environment:
+    - REDIS_HOST=${Redis_Host}
+    - KAFKA_HOSTS=${Kafka_Hosts}

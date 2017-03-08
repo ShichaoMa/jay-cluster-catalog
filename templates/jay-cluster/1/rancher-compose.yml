@@ -1,0 +1,37 @@
+.catalog:
+  name: "Jay Cluster"
+  version: 0.0.1
+  description: |
+    Jay Cluster can crawl various ecommerce sites.
+  minimum_rancher_version: v1.3.0
+  uuid: jay-cluster-0
+  questions:
+    - variable: "Redis_Host"
+      description: "The host/ip of Redis server"
+      label: "Redis Host"
+      required: true
+      default: "192.168.200.30"
+      type: "string"
+    - variable: "Kafka_Hosts"
+      description: "The hosts/services of Kafka cluster"
+      label: "Kafka Hosts/Services"
+      required: true
+      type: "service"
+    - variable: "Broker_Url"
+      description: "The redis URL for celery, e.g. redis://redis:6379/1"
+      label: "Broker URL"
+      required: true
+      type: "string"
+    - variable: "Log_Level"
+      description: "The logging level"
+      label: "Log Level"
+      required: true
+      default: "INFO"
+      type: "string"
+    - variable: "MongoDB_Server"
+      description: "The address of MongoDB server"
+      label: "MongoDB Server Address"
+      required: true
+      type: "string"
+
+jay-cluster:
