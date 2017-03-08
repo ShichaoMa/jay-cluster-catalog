@@ -1,5 +1,5 @@
 jay-monitor:
-  image: 'jinanlongen/jay_cluster:py3'
+  image: '192.168.200.35/longen/jay'
   ports:
     - "9999:9999"
   volumes:
@@ -15,7 +15,7 @@ jay-monitor:
     - LOG_STDOUT=True
 
 controller-monitor:
-  image: 'jinanlongen/jay_cluster:py3'
+  image: '192.168.200.35/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3/monitor:/app'
   command: ./controller_monitor.py
@@ -29,7 +29,7 @@ controller-monitor:
     - LOG_STDOUT=True
 
 celery-monitor:
-  image: 'jinanlongen/jay_cluster:py3'
+  image: '192.168.200.35/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3/monitor:/app'
   command: ./celery_monitor.py
@@ -43,7 +43,7 @@ celery-monitor:
     - LOG_STDOUT=True
 
 amazon-spider:
-  image: 'jinanlongen/jay_cluster:py3'
+  image: '192.168.200.35/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3:/app'
   command: scrapy crawl amazon
@@ -53,7 +53,7 @@ amazon-spider:
     - KAFKA_HOSTS=${Kafka_Hosts}
 
 zappos-spider:
-  image: 'jinanlongen/jay_cluster:py3'
+  image: '192.168.200.35/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3:/app'
   command: scrapy crawl zappos
@@ -63,7 +63,7 @@ zappos-spider:
     - KAFKA_HOSTS=${Kafka_Hosts}
 
 sixpm-spider:
-  image: 'jinanlongen/jay_cluster:py3'
+  image: '192.168.200.35/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3:/app'
   command: scrapy crawl 6pm
@@ -73,7 +73,7 @@ sixpm-spider:
     - KAFKA_HOSTS=${Kafka_Hosts}
 
 eastbay-spider:
-  image: 'jinanlongen/jay_cluster:py3'
+  image: '192.168.200.35/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3:/app'
   command: scrapy crawl eastbay
