@@ -15,7 +15,7 @@
       description: "The hosts/services of Kafka cluster"
       label: "Kafka Hosts/Services"
       required: true
-      type: "service"
+      type: "string"
     - variable: "Broker_Url"
       description: "The redis URL for celery, e.g. redis://redis:6379/1"
       label: "Broker URL"
