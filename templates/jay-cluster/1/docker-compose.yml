@@ -4,7 +4,6 @@ jay-monitor:
     - "9999:9999"
   volumes:
     - '/mnt/nas/jay-cluster-py3/monitor:/app'
-    - '/mnt/nas:/mnt/nas'
   command: ./statistic_monitor.py
   restart: always
   environment:
@@ -21,7 +20,6 @@ controller-monitor:
   image: '192.168.200.90/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3/monitor:/app'
-    - '/mnt/nas:/mnt/nas'
   command: ./controller_monitor.py
   restart: always
   environment:
@@ -39,7 +37,6 @@ captcha-monitor:
     - "8887:8887"
   volumes:
     - '/mnt/nas/jay-cluster-py3/monitor:/app'
-    - '/mnt/nas:/mnt/nas'
   command: ./captcha_monitor.py
   restart: always
   environment:
@@ -66,19 +63,18 @@ amazon-spider:
   image: '192.168.200.90/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3:/app'
-    - '/mnt/nas:/mnt/nas'
   command: scrapy crawl amazon
   restart: always
   environment:
     - REDIS_HOST=${Redis_Host}
     - KAFKA_HOSTS=${Kafka_Hosts}
     - SC_LOG_LEVEL=INFO
+    - CAPTCHA_ADDR=ca
 
 zappos-spider:
   image: '192.168.200.90/longen/jay'
   volumes:
     - '/mnt/nas/jay-cluster-py3:/app'
-    - '/mnt/nas:/mnt/nas'
   command: scrapy crawl zappos
   restart: always
   environment:
